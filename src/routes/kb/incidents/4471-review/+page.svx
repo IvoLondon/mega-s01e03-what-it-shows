@@ -4,7 +4,7 @@ title: '#4471 reviewed: split the date problems'
 owner: IvoLondon
 status: closed
 reviewed: '2026-10-29'
-signature: 'IvoLondon / Codex / S01E03'
+signature: 'v1.eyJzdWIiOiIyMTYzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyNjUzNDAsImV4cCI6MTc5MzM1MTc0MH0.-tjlWynz11jsl5yddNxDUxAYwpQmkrqglwm4e_qjfoQ'
 ---
 
 <script>
@@ -110,7 +110,7 @@ The supplemental evidence uses `desk-notes.json` without subtracting its reports
 No product runtime or fix is included in the export; the ticket reproductions are checks
 for engineering to run, supported by report examples and the supplied model.
 
-Signed by the student and harness named in this page's frontmatter. The desk reference
+Signed with the course-issued signature in this page's frontmatter. The desk reference
 below is derived by the supplied RenderStamp component from that signature.
 
 <RenderStamp {signature} />
