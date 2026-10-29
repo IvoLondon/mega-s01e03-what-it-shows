@@ -1,0 +1,101 @@
+---
+layout: runbook
+title: '#4471 reviewed: split the date problems'
+owner: IvoLondon
+status: reviewed
+reviewed: '2026-10-29'
+signature: 'IvoLondon / Codex / S01E03'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import IncidentEvidence from '#lib/kb/IncidentEvidence.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+The [original incident page](/kb/incidents/4471) calls this one known parser issue with one
+fix queued. Its rendered cause table contradicts that conclusion. Split the parser and form
+hint problems into separate tickets; fixing the parser alone does not correct the hint.
+
+<Callout kind="warn">
+This review describes the 4 October export, not a live queue. Counts below come from report
+IDs, tenant settings, and the exported classification code at render time. They are filing
+assignments, not confirmation that every report has been reproduced in the product.
+</Callout>
+
+## What belongs in each ticket
+
+**Parser:** the shared parser reads dates month first although the tenant writes day first.
+App and email reports, and booking-v2 form reports, take this path for the tenants in this
+export. For example, Harbour Dental's app report R-41200 says 7 April became 4 July.
+With its en-GB tenant settings, `07/04/2026` must stay 7 April, not become 4 July.
+
+**Form hint:** booking-v3 prints `MM/DD/YYYY` while the form reads the input in the tenant's
+day-first order. This affects form reports from Alder Physio (de-DE), Copper Studio (es-ES),
+and Pale Harbour (pt-PT). R-41241 says an Alder client booked for 6 August arrived on
+8 June: following the hint produces `08/06/2026`, which the form reads as 8 June.
+The app and email channels for those same tenants still belong to the parser ticket.
+
+Use the tenant's locale and form version from `src/lib/data/tenants`, together with the
+report's channel. `meta.browserLocale` describes the reporter's browser, and
+`meta.intakeTag` is intake's guess. Neither determines the cause.
+
+<CauseTable ticket={4471} />
+
+<IncidentEvidence />
+
+## What the timeline shows
+
+<QueueTimeline ticket={4471} />
+
+Read the received and merged series separately. Reports were already arriving in April;
+the large July merge records accumulated reports entering the same ticket. Neither a bulk
+merge nor the status “known” establishes when the defect began, that there is only one
+defect, or that a fix has shipped. Reports continue after the merge.
+
+## Replace subject-only triage with evidence
+
+The [triage page](/kb/triage/dedupe) still tells the desk to merge matching subjects and to
+merge when unsure. Its old review date triggers the layout's stale warning. The accepted
+[decision 0001](/kb/decisions/0001-dedupe-by-subject) records the original choice and its
+tradeoff; keep that historical record unchanged.
+
+For this incident, route by demonstrated cause instead:
+
+1. Deduplicate export rows by report ID before counting reports.
+2. Look up the tenant, date order, form version, and channel. Read the body and record the
+   input date and observed result when available.
+3. Merge only when the evidence establishes the same cause. Subject wording can differ;
+   matching subjects can still describe different causes.
+4. Keep unknown tenants and unresolved mechanisms separate for investigation. Do not treat
+   two missing classifications as the same cause.
+5. Keep the one-day-move reports linked to their current filing assignment while checking
+   their mechanism. A new finding may require reclassification and revised ticket counts.
+6. Before operational use, compare this snapshot with the current desk queue and tenant
+   configuration. Refresh the export and rebuild the page when either changes.
+
+The explorer below executes `sameCause` from the export. App and email for Kettle Books
+merge despite different subjects. Alder Physio's form and app stay apart despite a matching
+subject. Copper Studio's booking-v3 form and Morrow Tax's booking-v2 form also stay apart.
+
+<DedupeExplorer />
+
+Adopt a new decision record if the desk accepts this replacement rule, then update the
+triage guidance and its review date. This review does not silently rewrite an accepted
+decision or claim the product defects have been fixed.
+
+## Evidence and limits
+
+The tables run the supplied `uniqueById`, `causeOf`, `groupByCause`, and tenant lookup.
+The chart groups `receivedAt` and `mergedAt` by the desk's local date, Monday to Sunday.
+The supplemental evidence uses `desk-notes.json` without subtracting its reports twice.
+No product runtime or fix is included in the export; the ticket reproductions are checks
+for engineering to run, supported by report examples and the supplied model.
+
+Signed by the student and harness named in this page's frontmatter. The desk reference
+below is derived by the supplied RenderStamp component from that signature.
+
+<RenderStamp {signature} />
