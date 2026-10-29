@@ -12,6 +12,14 @@ IvoLondon and Codex on 29 October 2026. This is a fictional course dataset.
 - Complete rendered page: `rendered/kb/incidents/4471-review/index.html`, with assets in `rendered/_app/`.
 - Self-contained reading copy: `rendered/4471-review.html` (explorer controls are static).
 
+## Engineering disposition
+
+After ticket acceptance, the challenge page published its 5 October update:
+#4471 closed; parser fixed by `fix(dates): parse dd/mm for eu locales`; hint won't
+fix because booking-v3 was retired. The review records both outcomes. The parser
+issue closes as completed; the hint issue closes as not planned. Counts remain
+those of the original export. Closing a ticket does not mean its defect was fixed.
+
 ## Run and verify
 
 Use Node 22.17+ LTS or Node 24+.

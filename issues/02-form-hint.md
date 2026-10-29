@@ -1,5 +1,12 @@
 # Booking-v3 shows a month-first hint to day-first tenants — 33 reports from #4471
 
+## Engineering outcome — 5 October 2026
+
+**Won't fix. Close as not planned.** The [course engineering update](https://hq.mega.dev/challenges/what-it-shows#engineering-update)
+reports #4471 closed on 5 October and the hint marked won't fix because
+**booking-v3 form retired**. This is retirement of the affected path, not a correction
+to its field hint. The count below is the historical 4 October snapshot.
+
 ## Problem
 
 Booking-v3 prints `MM/DD/YYYY`, but the form reads dates in the tenant's day-first

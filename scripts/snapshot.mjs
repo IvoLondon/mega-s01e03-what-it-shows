@@ -1,7 +1,8 @@
-import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 // Preserve the actual prerendered site and all assets so the desk sees the real components.
+await rm('rendered', { recursive: true, force: true });
 await cp('build', 'rendered', { recursive: true });
 
 // A second, self-contained reading copy opens directly from disk. It is a static snapshot:

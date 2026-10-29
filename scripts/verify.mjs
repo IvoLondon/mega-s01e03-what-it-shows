@@ -36,6 +36,9 @@ try {
   const html = await readFile('build/kb/incidents/4471-review/index.html', 'utf8');
   assert(html.includes(deskRef(signature)));
   assert(!html.includes('no desk ref:'));
+  assert(html.includes('fix(dates): parse dd/mm for eu locales'));
+  assert(html.includes('booking-v3 form retired'));
+  assert(html.includes('not planned'));
   for (const text of ['379', '33', '412', '427', 'R-41620', 'reports received and merged into #4471']) assert(html.includes(text));
   const triage = await readFile('build/kb/triage/dedupe/index.html', 'utf8');
   assert(triage.includes('Nobody has re-read this page'));

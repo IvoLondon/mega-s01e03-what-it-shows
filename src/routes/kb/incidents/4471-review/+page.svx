@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 reviewed: split the date problems'
 owner: IvoLondon
-status: reviewed
+status: closed
 reviewed: '2026-10-29'
 signature: 'IvoLondon / Codex / S01E03'
 ---
@@ -25,6 +25,21 @@ This review describes the 4 October export, not a live queue. Counts below come 
 IDs, tenant settings, and the exported classification code at render time. They are filing
 assignments, not confirmation that every report has been reproduced in the product.
 </Callout>
+
+## Engineering update — 5 October 2026
+
+The [course engineering update](https://hq.mega.dev/challenges/what-it-shows#engineering-update)
+now reports **#4471 closed on 5 October**, with different outcomes for the two problems:
+
+- **Parser — fixed:** `fix(dates): parse dd/mm for eu locales`. Close the parser ticket
+  as completed, on the desk's report that the parsing fix shipped.
+- **Hint — won't fix:** booking-v3 form retired. Close the hint ticket as not planned,
+  because retiring the form removed that path; the desk did not report a hint correction.
+
+Closed does not mean every defect was fixed. These are the engineering desk's reported
+outcomes; the product patch and retirement implementation are not part of this export.
+The historical counts below still describe the 4 October snapshot. The timing anomalies
+remain visible rather than being silently treated as proof of the parsing fix's coverage.
 
 ## What belongs in each ticket
 

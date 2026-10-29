@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../../../_app/immutable/entry/start.CkvSjaB-.js" rel="modulepreload">
+    <link href="../../../_app/immutable/entry/start.HKrmfY67.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CCQCA_wo.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/DNpPmSu-.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/AEkfkAXi.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BKHQZGXY.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.3qJdozU4.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.6CIitoyp.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CTI9AgN1.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CE8BLXTJ.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CM4rNPML.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BfPXsc-V.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.DVn_uchl.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/_hnNinwO.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/5.DW6Cjnb4.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/AMsdRFn5.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.Du7c1_f0.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/FvxG9zMq.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/ISchWhUY.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BNXYBDTW.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/2kG4nqZ8.js" rel="modulepreload">
@@ -28,11 +28,16 @@
 		<link href="../../../_app/immutable/assets/5.CMZ6TBbc.css" rel="stylesheet">
   </head>
   <body data-sveltekit-preload-data="hover">
-    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 reviewed: split the date problems</h1> <p class="meta svelte-e2jw2j"><span>owner <b>IvoLondon</b></span> <span class="status reviewed svelte-e2jw2j">reviewed</span> <span class="svelte-e2jw2j">reviewed 2026-10-29 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">original incident page</a> calls this one known parser issue with one
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 reviewed: split the date problems</h1> <p class="meta svelte-e2jw2j"><span>owner <b>IvoLondon</b></span> <span class="status closed svelte-e2jw2j">closed</span> <span class="svelte-e2jw2j">reviewed 2026-10-29 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">original incident page</a> calls this one known parser issue with one
 fix queued. Its rendered cause table contradicts that conclusion. Split the parser and form
 hint problems into separate tickets; fixing the parser alone does not correct the hint.</p> <aside class="warn svelte-17bri61"><!---->This review describes the 4 October export, not a live queue. Counts below come from report
 IDs, tenant settings, and the exported classification code at render time. They are filing
-assignments, not confirmation that every report has been reproduced in the product.<!----></aside><!----> <h2>What belongs in each ticket</h2> <p><strong>Parser:</strong> the shared parser reads dates month first although the tenant writes day first.
+assignments, not confirmation that every report has been reproduced in the product.<!----></aside><!----> <h2>Engineering update — 5 October 2026</h2> <p>The <a href="https://hq.mega.dev/challenges/what-it-shows#engineering-update" rel="nofollow">course engineering update</a> now reports <strong>#4471 closed on 5 October</strong>, with different outcomes for the two problems:</p> <ul><li><strong>Parser — fixed:</strong> <code>fix(dates): parse dd/mm for eu locales</code>. Close the parser ticket
+as completed, on the desk’s report that the parsing fix shipped.</li> <li><strong>Hint — won’t fix:</strong> booking-v3 form retired. Close the hint ticket as not planned,
+because retiring the form removed that path; the desk did not report a hint correction.</li></ul> <p>Closed does not mean every defect was fixed. These are the engineering desk’s reported
+outcomes; the product patch and retirement implementation are not part of this export.
+The historical counts below still describe the 4 October snapshot. The timing anomalies
+remain visible rather than being silently treated as proof of the parsing fix’s coverage.</p> <h2>What belongs in each ticket</h2> <p><strong>Parser:</strong> the shared parser reads dates month first although the tenant writes day first.
 App and email reports, and booking-v2 form reports, take this path for the tenants in this
 export. For example, Harbour Dental’s app report R-41200 says 7 April became 4 July.
 With its en-GB tenant settings, <code>07/04/2026</code> must stay 7 April, not become 4 July.</p> <p><strong>Form hint:</strong> booking-v3 prints <code>MM/DD/YYYY</code> while the form reads the input in the tenant’s
@@ -68,15 +73,15 @@ below is derived by the supplied RenderStamp component from that signature.</p> 
 			
 			<script>
 				{
-					__sveltekit_791dcg = {
+					__sveltekit_2s3dby = {
 						base: new URL("../../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../../_app/immutable/entry/start.CkvSjaB-.js"),
-						import("../../../_app/immutable/entry/app.3qJdozU4.js")
+						import("../../../_app/immutable/entry/start.HKrmfY67.js"),
+						import("../../../_app/immutable/entry/app.6CIitoyp.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],

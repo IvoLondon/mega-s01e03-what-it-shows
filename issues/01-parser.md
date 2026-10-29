@@ -1,5 +1,12 @@
 # Parser: month-first parsing for day-first tenants — 379 reports from #4471
 
+## Engineering outcome — 5 October 2026
+
+**Fixed. Close as completed.** The [course engineering update](https://hq.mega.dev/challenges/what-it-shows#engineering-update)
+reports #4471 closed on 5 October and the parser fixed by
+`fix(dates): parse dd/mm for eu locales`. This is the desk's reported disposition;
+the product patch is not included here. The count below is the historical 4 October snapshot.
+
 ## Problem
 
 The shared parser reads dates as month/day even when the tenant writes day/month.
