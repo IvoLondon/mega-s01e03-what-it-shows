@@ -1,4 +1,4 @@
-# Day-first tenant dates are parsed month first — 379 reports from #4471
+# Parser: month-first parsing for day-first tenants — 379 reports from #4471
 
 ## Problem
 
